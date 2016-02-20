@@ -1,0 +1,9 @@
+.nrepl-*
+.lein-*
+*~
+/*.log
+/target
+/*-init.clj
+/resources/public/js/compiled
+out
+profiles.clj
