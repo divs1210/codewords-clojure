@@ -15,4 +15,5 @@
 
 (defn ^:export init [] 
   (re-frame/dispatch-sync [:initialize-db])
+  (js/setInterval #(re-frame/dispatch [:second-elapsed]) 1000)
   (mount-root))
