@@ -1,11 +1,17 @@
 (ns codewords.views
   (:require [re-frame.core :as re-frame]))
 
-(defn time-comp [seconds]
-  [:p "Seconds elapsed: " seconds])
+(defn header-comp []
+  [:h3#header {:style {:background "#dcc"}}
+   "yayy! re-frame + figwheel!"])
+
+(defn timer-comp [seconds]
+  [:div#timer
+   [:p "seconds elapsed: " seconds]])
 
 (defn main-panel []
   (let [seconds (re-frame/subscribe [:seconds])]
     (fn []
-      [:div#timer
-       [time-comp @seconds]])))
+      [:div#main-panel {:style {:text-align "center"}}
+       [header-comp]
+       [timer-comp @seconds]])))
