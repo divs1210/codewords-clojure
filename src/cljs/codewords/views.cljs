@@ -2,7 +2,7 @@
   (:require [re-frame.core :as re-frame]))
 
 (defn header-comp []
-  [:h3#header {:style {:background "#cce"}}
+  [:p#header {:style {:background "#cce"}}
    "yayy! re-frame + figwheel!"])
 
 (defn timer-comp [seconds]
