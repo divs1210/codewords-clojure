@@ -2,8 +2,9 @@
   (:require [re-frame.core :as re-frame]))
 
 (defn header-comp []
-  [:p#header {:style {:background "#cce"}}
-   "yayy! re-frame + figwheel!"])
+  [:div#timer
+   [:p#header {:style {:background "#cce"}}
+    "Codewords"]])
 
 (defn timer-comp [seconds]
   [:div#timer
@@ -11,13 +12,13 @@
 
 (defn footer-comp []
   [:div#footer {:style {:background "#cce"}}
-   [:p "Codewords"]])
+   [:p "yayy! re-frame + figwheel!"]])
 
 (defn main-panel []
   (let [seconds (re-frame/subscribe [:seconds])]
     (fn []
       [:div#main-panel {:style {:text-align "center"
-                                :background "#efe"}}
+                                :background "#dfd"}}
        [header-comp]
        [timer-comp @seconds]
        [footer-comp]])))
