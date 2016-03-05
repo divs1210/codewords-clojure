@@ -1,24 +1,24 @@
 (ns codewords.views
   (:require [re-frame.core :as re-frame]))
 
-(defn header-comp []
-  [:div#timer
-   [:p#header {:style {:background "#cce"}}
-    "Codewords"]])
+(defn header []
+  [:div#header
+   [:p {:style {:background "#cce"}}
+    "Codewords Demo"]])
 
-(defn timer-comp [seconds]
-  [:div#timer
-   [:p "seconds elapsed: " seconds]])
-
-(defn footer-comp []
+(defn footer []
   [:div#footer {:style {:background "#cce"}}
-   [:p "yayy! re-frame + figwheel!"]])
+   [:p "footer"]])
 
-(defn main-panel []
+(defn timer []
   (let [seconds (re-frame/subscribe [:seconds])]
     (fn []
-      [:div#main-panel {:style {:text-align "center"
-                                :background "#dfd"}}
-       [header-comp]
-       [timer-comp @seconds]
-       [footer-comp]])))
+      [:div#timer
+       [:p "seconds elapsed: " @seconds]])))
+
+(defn main-panel []
+  [:div#main-panel {:style {:text-align "center"
+                            :background "#dfd"}}
+   [header]
+   [timer]
+   [footer]])
