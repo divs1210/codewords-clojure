@@ -6,3 +6,10 @@
  :seconds
  (fn [db]
    (reaction (:seconds @db))))
+
+(re-frame/register-sub
+ :hidden?
+ (fn [db [_ cell]]
+   (reaction (-> @db
+                 :hidden
+                 (contains? cell)))))
