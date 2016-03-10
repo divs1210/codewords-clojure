@@ -6,19 +6,17 @@
    :light "#9f9"})
 
 (defn header [text]
-  [:div#header
-   [:p {:style {:background (:dark colors)}}
-    text]])
+  [:p#header {:style {:background (:dark colors)}}
+   text])
 
 (defn footer [text]
-  [:div#footer {:style {:background (:dark colors)}}
-   [:p text]])
+  [:p#footer {:style {:background (:dark colors)}}
+   text])
 
 (defn timer []
   (let [seconds (rf/subscribe [:seconds])]
     (fn []
-      [:div#timer
-       [:p "seconds elapsed: " @seconds]])))
+      [:p#timer "seconds elapsed: " @seconds])))
 
 (defn cell [width row col]
   (let [hidden? (rf/subscribe [:hidden? [row col]])]
@@ -39,7 +37,7 @@
 (defn grid [height width rows cols]
   (let [row-height (/ height rows)
         col-width  (/ width  cols)]
-    [:div#grid>table {:style {:margin "auto"}}
+    [:table#grid {:style {:margin "auto"}}
      (for [row (range rows)]
        ^{:key (str "row-" row)}
        [row-of-cells row-height col-width row cols])]))
